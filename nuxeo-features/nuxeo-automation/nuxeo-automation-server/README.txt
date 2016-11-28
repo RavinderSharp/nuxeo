@@ -266,7 +266,6 @@ Example of a JSON document entry
     "files:files": [],
     "common:icon": null,
     "common:icon-expanded": null,
-    "common:size": null,
     "file:content":     {
       "name": "test.jpg",
       "mime-type": "image/jpeg",
@@ -274,8 +273,7 @@ Example of a JSON document entry
       "digest": null,
       "length": "290096",
       "data": "files/96bfb9cb-a13d-48a2-9bbd-9341fcf24801?path=%2Fcontent"
-    },
-    "file:filename": null
+    }
   }
 
 The top level properties "title" and "lastModified" have the same value as the corresponding embedded properties "dc:title" and "dc:modified".
@@ -631,7 +629,6 @@ Content-Length: 1121
     "files:files": [],
     "common:icon": null,
     "common:icon-expanded": null,
-    "common:size": null,
     "file:content":     {
       "name": "test.jpg",
       "mime-type": "image/jpeg",
@@ -639,8 +636,7 @@ Content-Length: 1121
       "digest": null,
       "length": "290096",
       "data": "files/96bfb9cb-a13d-48a2-9bbd-9341fcf24801?path=%2Fcontent"
-    },
-    "file:filename": null
+    }
   }
 
 4. Download the content of the blob we set at step 2.

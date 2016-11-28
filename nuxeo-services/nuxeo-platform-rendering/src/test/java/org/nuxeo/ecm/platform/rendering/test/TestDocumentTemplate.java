@@ -26,8 +26,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.inject.Inject;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.nuxeo.ecm.core.api.Blob;
+import org.nuxeo.ecm.core.api.Blobs;
+import org.nuxeo.ecm.core.api.CoreSession;
+import org.nuxeo.ecm.core.api.DocumentModel;
+import org.nuxeo.ecm.core.test.CoreFeature;
+import org.nuxeo.ecm.core.test.annotations.Granularity;
+import org.nuxeo.ecm.core.test.annotations.RepositoryConfig;
+import org.nuxeo.ecm.platform.rendering.fm.FreemarkerEngine;
+import org.nuxeo.ecm.platform.rendering.wiki.WikiTransformer;
+import org.nuxeo.ecm.platform.rendering.wiki.extensions.FreemarkerMacro;
+import org.nuxeo.ecm.platform.rendering.wiki.extensions.PatternFilter;
+import org.nuxeo.runtime.test.runner.Features;
+import org.nuxeo.runtime.test.runner.FeaturesRunner;
+
+import junit.framework.Assert;
 
 /*
  * Copyright (c) 2006-2013 Nuxeo SA (http://nuxeo.com/) and others.
@@ -49,24 +67,6 @@ import javax.inject.Inject;
  *
  * $Id$
  */
-import junit.framework.Assert;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.nuxeo.ecm.core.api.Blob;
-import org.nuxeo.ecm.core.api.Blobs;
-import org.nuxeo.ecm.core.api.CoreSession;
-import org.nuxeo.ecm.core.api.DocumentModel;
-import org.nuxeo.ecm.core.test.CoreFeature;
-import org.nuxeo.ecm.core.test.annotations.Granularity;
-import org.nuxeo.ecm.core.test.annotations.RepositoryConfig;
-import org.nuxeo.ecm.platform.rendering.fm.FreemarkerEngine;
-import org.nuxeo.ecm.platform.rendering.wiki.WikiTransformer;
-import org.nuxeo.ecm.platform.rendering.wiki.extensions.FreemarkerMacro;
-import org.nuxeo.ecm.platform.rendering.wiki.extensions.PatternFilter;
-import org.nuxeo.runtime.test.runner.Features;
-import org.nuxeo.runtime.test.runner.FeaturesRunner;
 
 /**
  * @author <a href="mailto:tdelprat@nuxeo.com">Tiry</a>
@@ -106,7 +106,6 @@ public class TestDocumentTemplate {
             Blob blob = Blobs.createBlob("something", "application/something", null, "file" + i + ".something");
             Map<String, Serializable> blobEntry = new HashMap<>();
             blobEntry.put("file", (Serializable) blob);
-            blobEntry.put("filename", blob.getFilename());
             blobs.add(blobEntry);
         }
         doc.setPropertyValue("files:files", (Serializable) blobs);
